@@ -25,3 +25,4 @@ student_one = Student("Bato", [90, 94, 87])
 print(student_one.name)
 print(student_one.__class__) # <class 'Student'>
 
+
