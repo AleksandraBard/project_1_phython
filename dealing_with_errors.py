@@ -3,24 +3,26 @@ One of Python’s core tenets is: “ask for forgiveness, not for permission”.
 it works fantastically in Python.
 """
 
-class Car:
-  def __init__(self, make, model):
-    self.make = make
-    self.model = model
 
-  def __repr__(self):
-    return f'<Car {self.make} {self.model}>'
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def __repr__(self):
+        return f'<Car {self.make} {self.model}>'
 
 
 class Garage:
-  def __init__(self):
-    self.cars = []
+    def __init__(self):
+        self.cars = []
 
-  def __len__(self):
-    return len(self.cars)
+    def __len__(self):
+        return len(self.cars)
 
-  def add_car(self, car):
-    self.cars.append(car)
+    def add_car(self, car):
+        self.cars.append(car)
+
 
 """
 We would use these classes in this way:
@@ -37,9 +39,9 @@ If we wanted to make sure that we’re only adding `Car` objects to the `Garage`
 
 car = Car('Ford', 'Focus')
 if isinstance(car, Car):
-  ford_garage.add_car(car)
+    ford_garage.add_car(car)
 else:
-  print("Your car was not a Car!")
+    print("Your car was not a Car!")
 
 """
 This is a typical structure of calling a function (in this case, the `add_car()` method:
@@ -60,26 +62,29 @@ if failed:
 Circling back to raising exceptions, we could modify the `add_car()` method to do this:
 """
 
-class Car:
-  def __init__(self, make, model):
-    self.make = make
-    self.model = model
 
-  def __repr__(self):
-    return f'<Car {self.make} {self.model}>'
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def __repr__(self):
+        return f'<Car {self.make} {self.model}>'
 
 
 class Garage:
-  def __init__(self):
-    self.cars = []
+    def __init__(self):
+        self.cars = []
 
-  def __len__(self):
-    return len(self.cars)
+    def __len__(self):
+        return len(self.cars)
 
-  def add_car(self, car):
-    if not isinstance(car, Car):
-      raise TypeError(f'Tried to add a `{car.__class__.__name__}` to the garage, but you can only add `Car` objects.')
-    self.cars.append(car)
+    def add_car(self, car):
+        if not isinstance(car, Car):
+            raise TypeError(
+                f'Tried to add a `{car.__class__.__name__}` to the garage, but you can only add `Car` objects.')
+        self.cars.append(car)
+
 
 """
 And then we could call it like so:
@@ -87,9 +92,9 @@ And then we could call it like so:
 
 car = Car('Ford', 'Focus')
 try:
-  ford_garage.add_car(car)
+    ford_garage.add_car(car)
 except TypeError:
-  print("Your car was not a Car!")
+    print("Your car was not a Car!")
 
 """
 There are two benefits:
@@ -106,11 +111,11 @@ We can catch multiple errors (even though our method won’t raise them, just sh
 
 car = Car('Ford', 'Focus')
 try:
-  ford_garage.add_car(car)
+    ford_garage.add_car(car)
 except TypeError:
-  print("Your car was not a Car!")
+    print("Your car was not a Car!")
 except ValueError:
-  print("Something was wrong with your Car...")
+    print("Something was wrong with your Car...")
 
 """
 Over the next few sections we’ll be making use of this, which is why it’s really useful to know how to use `try` and `catch`.
@@ -123,8 +128,8 @@ We can use `finally` to run a block of code no matter what happens: whether or n
 
 car = Car('Ford', 'Focus')
 try:
-  ford_garage.add_car(car)
+    ford_garage.add_car(car)
 except TypeError:
-  print("Your car was not a Car!")
+    print("Your car was not a Car!")
 finally:
-  print(f"Your garage has {len(ford_garage)} cars.")
+    print(f"Your garage has {len(ford_garage)} cars.")
