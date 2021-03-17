@@ -1,1 +1,1 @@
-First steps in writing functions in Python 
+Udemy course "The Complete Python Course | Learn Python by Doing" by Jose Salvatierra
