@@ -1,10 +1,9 @@
 import json
 
-file = open('friends_json.txt', 'r')
-# converts to a dictionary
-file_contents = json.load(file)
+with open('friends_json.txt', 'r') as file:
+    # converts to a dictionary
+    file_contents = json.load(file)
 
-file.close()
 
 print(file_contents["friends"][0])
 
@@ -14,9 +13,9 @@ cars = [
     {'make': 'Ford', 'model': 'Explorer'}
 ]
 
-file = open('cars_json.txt', 'w')
-json.dump(cars, file)
-file.close()
+with open('cars_json.txt', 'w') as file:
+    json.dump(cars, file)
+
 
 my_json_string = '[{"name": "Alfa Romeo", "released": 1950}]'
 
